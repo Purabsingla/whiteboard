@@ -4,7 +4,7 @@ import Toolbar from "./Toolbar.jsx";
 import UserCursors from "./UserCursor.jsx";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:5000");
+const socket = io("https://whiteboard-d7uj.onrender.com");
 
 export default function Whiteboard({ roomId, username }) {
   const [userCount, setUserCount] = useState(0);

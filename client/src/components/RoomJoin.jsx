@@ -24,10 +24,13 @@ export default function RoomJoin({ setRoomId, setUsername }) {
         return;
       }
 
-      const res = await axios.post("http://localhost:5000/api/rooms/join", {
-        roomId: roomCode,
-        username: name || "Anonymous",
-      });
+      const res = await axios.post(
+        "https://whiteboard-d7uj.onrender.com/api/rooms/join",
+        {
+          roomId: roomCode,
+          username: name || "Anonymous",
+        }
+      );
 
       // API should return { roomId }
       setRoomId(res.data.roomId || roomCode);
