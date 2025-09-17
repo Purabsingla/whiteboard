@@ -141,6 +141,10 @@ npm run dev //Nodemon
 - Client (React) → Vercel
 - Server (Express + Socket.io) → Render
 
+## ScreenShots
+ ![Whiteboard Screenshot](client/public/assets/home.png)
+![Whiteboard Screenshot](client/public/assets/drawing.png)
 
- 
+## License  
 
+This project is licensed under the [MIT License](./LICENSE).  
