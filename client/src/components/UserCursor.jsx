@@ -61,33 +61,59 @@ export default function UserCursors({ roomId, users, socket }) {
               transform: "translate(-50%, -50%)",
               pointerEvents: "none",
               zIndex: 9999,
+              filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.3))",
+              animation: "cursorPulse 2s infinite ease-in-out",
             }}
           >
-            {/* Cursor pointer */}
+            {/* Glowing ring effect */}
+            <div
+              style={{
+                position: "absolute",
+                width: "24px",
+                height: "24px",
+                borderRadius: "50%",
+                background: `radial-gradient(circle, ${color}40, transparent 70%)`,
+                animation: "ripple 1.5s infinite ease-out",
+                top: "-2px",
+                left: "-2px",
+              }}
+            />
+
+            {/* Cursor pointer with gradient and glow */}
             <div
               style={{
                 width: 0,
                 height: 0,
-                // borderLeft: `10px solid ${user.color || "#ff6b6b"}`,
-                borderLeft: `10px solid ${color}`,
-                borderTop: "10px solid transparent",
-                borderBottom: "10px solid transparent",
+                borderLeft: `12px solid ${color}`,
+                borderTop: "12px solid transparent",
+                borderBottom: "12px solid transparent",
+                filter: `drop-shadow(0 0 8px ${color}60) drop-shadow(0 2px 4px rgba(0,0,0,0.3))`,
+                position: "relative",
+                zIndex: 2,
               }}
             />
-            {/* User name label */}
+
+            {/* User name label with glassmorphism */}
             <div
               style={{
                 position: "absolute",
-                top: 18,
-                left: 0,
-                transform: "translateX(-50%)",
-                padding: "2px 6px",
-                borderRadius: 4,
-                background: color,
+                top: 20,
+                left: 2,
+                transform: "translateX(-20%)",
+                padding: "4px 8px",
+                borderRadius: 8,
+                background: `linear-gradient(135deg, ${color}E6, ${color}CC)`,
+                backdropFilter: "blur(10px)",
+                border: `1px solid ${color}40`,
                 color: "#fff",
-                fontSize: 11,
-                fontWeight: 700,
+                fontSize: 10,
+                fontWeight: 600,
                 whiteSpace: "nowrap",
+                fontFamily:
+                  "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+                letterSpacing: "0.02em",
+                boxShadow: `0 4px 20px ${color}40, 0 1px 3px rgba(0,0,0,0.2)`,
+                animation: "fadeInUp 0.3s ease-out",
               }}
             >
               {user.name}
@@ -95,6 +121,25 @@ export default function UserCursors({ roomId, users, socket }) {
           </div>
         );
       })}
+
+      <style>
+        {`
+          @keyframes cursorPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.05); }
+          }
+          
+          @keyframes ripple {
+            0% { transform: scale(0.8); opacity: 1; }
+            100% { transform: scale(2.5); opacity: 0; }
+          }
+          
+          @keyframes fadeInUp {
+            from { opacity: 0; transform: translateX(-20%) translateY(5px); }
+            to { opacity: 1; transform: translateX(-20%) translateY(0); }
+          }
+        `}
+      </style>
     </>
   );
 }

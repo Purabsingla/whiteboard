@@ -234,7 +234,14 @@ export default function DrawingCanvas({ roomId, color, width, socket }) {
         cursor: "crosshair",
         width: "100%",
         height: "100%",
-        backgroundColor: "white",
+        background: `
+          linear-gradient(45deg, transparent 24%, rgba(255, 255, 255, 0.02) 25%, rgba(255, 255, 255, 0.02) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.02) 75%, rgba(255, 255, 255, 0.02) 76%, transparent 77%, transparent),
+          linear-gradient(45deg, transparent 24%, rgba(255, 255, 255, 0.02) 25%, rgba(255, 255, 255, 0.02) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.02) 75%, rgba(255, 255, 255, 0.02) 76%, transparent 77%, transparent),
+          #ffffff
+        `,
+        backgroundSize: "20px 20px",
+        backgroundPosition: "0 0, 10px 10px",
+        transition: "all 0.2s ease",
       }}
     />
   );
